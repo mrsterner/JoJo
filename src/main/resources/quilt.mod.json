@@ -1,27 +1,30 @@
 {
   "schema_version": 1,
   "quilt_loader": {
-    "group": "quilt-example-mod",
-    "id": "modid",
+    "group": "jojo",
+    "id": "jojo",
     "version": "${version}",
 
-    "name": "Example Mod",
-    "description": "This is an example description! Tell everyone what your mod is about!",
+    "name": "JoJo",
+    "description": "This is a JoJo mod!",
     "authors": [
-      "Me!"
+      "MrSterner"
     ],
     "contact": {
-      "homepage": "https://quiltmc.org/",
-      "sources": "https://github.com/Oliver-makes-code/quilt-example-mod"
+      "homepage": "https://bloomhousemc.com/",
+      "sources": "https://github.com/mrsterner/jojo"
     },
 
-    "license": "CC0-1.0",
-    "icon": "assets/modid/icon.png",
+    "license": "MIT",
+    "icon": "assets/jojo/icon.png",
 
     "environment": "*",
     "entrypoints": {
       "init": [
-        "org.quiltmc.example.ExampleMod"
+        "dev.mrsterner.jojo.JoJo"
+      ],
+      "client_init": [
+        "dev.mrsterner.jojo.JoJoClient"
       ]
     },
     "depends": [
@@ -44,6 +47,6 @@
     ]
   },
   "mixin": [
-    "modid.mixins.json"
+    "jojo.mixins.json"
   ]
 }
