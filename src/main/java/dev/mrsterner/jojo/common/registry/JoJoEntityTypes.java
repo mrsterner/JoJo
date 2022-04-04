@@ -6,7 +6,7 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.util.registry.Registry;
 
 
-public class JJEntityTypes {
+public class JoJoEntityTypes {
     public static final EntityType<StandEntity> STAND = register("stand",StandEntity.createAttributes(), EntityType.Builder.create(StandEntity::new, SpawnGroup.MISC).setDimensions(0.8F, 0.8F));
 
 

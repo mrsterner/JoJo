@@ -4,9 +4,30 @@
   "package": "dev.mrsterner.jojo.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "BoatEntityMixin",
+    "EnchantmentTargetMixin",
+    "EntityMixin",
+    "EntityRenderDispatcherMixin",
+    "LivingEntityMixin",
+    "MinecartEntityMixin",
+    "MobEntityMixin",
+    "PlayerEntityMixin",
+    "ServerPlayerEntityMixin",
+    "ServerWorldMixin",
+    "WorldChunkMixin"
   ],
   "client": [
-    "ExampleMixin"
+    "PlayerEntityRendererMixin",
+    "ClientPlayerEntityMixin",
+    "ClientWorldMixin",
+    "InGameHudMixin",
+    "InGameOverlayRendererMixin",
+    "GameRendererMixin",
+    "ParticleAccessor",
+    "ParticleManagerMixin",
+    "PlayerEntityRendererMixin",
+    "RenderLayerAccessor",
+    "WorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,5 +1,6 @@
 package dev.mrsterner.jojo.common.entity;
 
+import dev.mrsterner.jojo.api.stand.Stand;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -8,13 +9,20 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Arm;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.PlayState;
+import software.bernie.geckolib3.core.builder.AnimationBuilder;
+import software.bernie.geckolib3.core.controller.AnimationController;
+import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 public class StandEntity extends LivingEntity implements IAnimatable {
-    final AnimationFactory factory = new AnimationFactory(this);
+    private final AnimationFactory factory = new AnimationFactory(this);
+    public Vec3d motionCalc = new Vec3d(0,0,0);
+    public Stand stand;
     public StandEntity(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -48,9 +56,20 @@ public class StandEntity extends LivingEntity implements IAnimatable {
         return null;
     }
 
+    private <E extends IAnimatable> PlayState devMovement(AnimationEvent<E> animationEvent) {
+        final AnimationController animationController = animationEvent.getController();
+        //Create a builder to stack animations in.
+        AnimationBuilder builder = new AnimationBuilder();
+
+        builder.addAnimation( "animation.theworld.idle", true);
+
+        animationController.setAnimation(builder);
+        return PlayState.CONTINUE;
+    }
+
     @Override
     public void registerControllers(AnimationData animationData) {
-
+        animationData.addAnimationController(new AnimationController<>(this, "DevMovement", 2, this::devMovement));
     }
 
     @Override
